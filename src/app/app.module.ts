@@ -8,15 +8,25 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from 'src/shared/shared.module';
+import { ComorbidadeService } from 'src/shared/services/ComorbidadeService.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    SharedModule,
+    BrowserModule, 
+    HttpClientModule, // tem que importar esse cara aqui pras requisições aceitarem
+    IonicModule.forRoot(), 
+    AppRoutingModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ComorbidadeService
   ],
   bootstrap: [AppComponent]
 })
