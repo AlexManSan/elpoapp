@@ -46,6 +46,9 @@ export class HomePage<T extends GenericDomain> implements OnInit {
     private idadePacService: IdadePacienteService,
     public formBuilder: FormBuilder
     ){ 
+      this.formGroup = this.formBuilder.group({
+        
+      });
   }
 
   ngOnInit() {
