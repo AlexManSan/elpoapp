@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       Preenchimento da ELPO
     </ion-title>
@@ -72,6 +72,74 @@
           </ion-select>
         </ion-item>
     </ion-list>
+
+    <br><br>
+
+    <div class="list-form bg-light">
+      <ion-item class="animated fadeInUp ion-no-padding">
+        <ion-label position="floating">Tipo de posição cirúrgica</ion-label>
+        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+          <ion-select-option *ngFor="let reg of litpPosCirurgica" 
+          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="animated fadeInUp ion-no-padding">
+        <ion-label position="floating">Tipo de cirurgia</ion-label>
+        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+          <ion-select-option *ngFor="let reg of litpCirurgia" 
+          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="animated fadeInUp ion-no-padding">
+        <ion-label position="floating">Tipo de anestesia</ion-label>
+        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+          <ion-select-option *ngFor="let reg of litpAnestesia" 
+          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="animated fadeInUp ion-no-padding">
+        <ion-label position="floating">Superfície de suporte</ion-label>
+        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+          <ion-select-option *ngFor="let reg of lisupSuporte" 
+          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="animated fadeInUp ion-no-padding">
+        <ion-label position="floating">Posição dos membros</ion-label>
+        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+          <ion-select-option *ngFor="let reg of liposMembros" 
+          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="animated fadeInUp ion-no-padding">
+        <ion-label position="floating">Comorbidade</ion-label>
+        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+          <ion-select-option *ngFor="let reg of licomorbidade" 
+          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Idade do paciente</ion-label>
+          <!-- <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar"
+          [interfaceOptions]="customAlertOptions" interface="alert"
+          [interfaceOptions]="customPopoverOptions" interface="popover" 
+          [interfaceOptions]="customActionSheetOptions" interface="action-sheet"> -->
+
+          <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of liidadePaciente" 
+            value="{{reg.id}}">{{reg.idade+' - '+reg.score}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+    </div>
+
+    <br><br>
 
     <ion-label>Total de score: 30</ion-label>
 
