@@ -9,7 +9,7 @@
 <ion-content>
   <div class="ion-padding">
    
-    <ion-list>
+    <!-- <ion-list>
 
       <ion-item>
         <ion-label>Tipo de posição cirúrgica</ion-label>
@@ -61,10 +61,10 @@
 
       <ion-item>
           <ion-label>Idade do paciente</ion-label>
-          <!-- <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar"
+           <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar"
           [interfaceOptions]="customAlertOptions" interface="alert"
           [interfaceOptions]="customPopoverOptions" interface="popover" 
-          [interfaceOptions]="customActionSheetOptions" interface="action-sheet"> -->
+          [interfaceOptions]="customActionSheetOptions" interface="action-sheet"> 
 
           <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
             <ion-select-option *ngFor="let reg of liidadePaciente" 
@@ -73,8 +73,7 @@
         </ion-item>
     </ion-list>
 
-    <br><br>
-
+    <br><br> -->
     <div class="list-form bg-light">
       <ion-item class="animated fadeInUp ion-no-padding">
         <ion-label position="floating">Tipo de posição cirúrgica</ion-label>
@@ -126,11 +125,6 @@
 
       <ion-item class="animated fadeInUp ion-no-padding">
           <ion-label position="floating">Idade do paciente</ion-label>
-          <!-- <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar"
-          [interfaceOptions]="customAlertOptions" interface="alert"
-          [interfaceOptions]="customPopoverOptions" interface="popover" 
-          [interfaceOptions]="customActionSheetOptions" interface="action-sheet"> -->
-
           <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
             <ion-select-option *ngFor="let reg of liidadePaciente" 
             value="{{reg.id}}">{{reg.idade+' - '+reg.score}}</ion-select-option>
