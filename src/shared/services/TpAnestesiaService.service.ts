@@ -16,6 +16,6 @@ import { TpAnestesia } from '../model/TpAnestesia.model';
 export class TpAnestesiaService extends GenericService<TpAnestesia> {
 
   constructor(protected injector: Injector) {
-    super(`${API_CONFIG.baseUrl}/tpanestesias`, injector, Comorbidade.fromJson)
+    super(`${API_CONFIG.baseUrl}/tpanestesias`, injector, TpAnestesia.fromJson)
    }
 }

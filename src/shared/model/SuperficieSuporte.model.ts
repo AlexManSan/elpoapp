@@ -10,4 +10,9 @@ export class SuperficieSuporte extends GenericDomain{
         public descricao?: string,
         public score?: number
     ) { super(); }
+
+    // metodo recebe um json e retorna uma nova instância da classe entry com os dados do json
+    static fromJson(jsonData: any): SuperficieSuporte {
+        return Object.assign(new SuperficieSuporte(), jsonData);
+    }
 }

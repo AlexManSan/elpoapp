@@ -3,7 +3,7 @@ import { Injectable, Injector } from '@angular/core';
 import { GenericService } from './GenericService.service';
 import { Comorbidade } from '../model/Comorbidade.model';
 import { API_CONFIG } from 'src/config/api.config';
-import { PosicaoMembros } from '../model/PosicaoMembros.model';
+import { Elpo } from '../model/Elpo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,9 @@ import { PosicaoMembros } from '../model/PosicaoMembros.model';
  * Classe de serviço que se estende a BaseResourceService<Categoria>, informando seu tipo
  * Autor Alex Santos
  */
-export class PosicaoMembrosService extends GenericService<PosicaoMembros> {
+export class ElpoService extends GenericService<Elpo> {
 
   constructor(protected injector: Injector) {
-    super(`${API_CONFIG.baseUrl}/pmembros`, injector, PosicaoMembros.fromJson)
+    super("http://localhost:8080/elpos", injector, Elpo.fromJson)
    }
 }

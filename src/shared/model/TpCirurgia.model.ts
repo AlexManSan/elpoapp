@@ -10,4 +10,9 @@ export class TpCirurgia extends GenericDomain{
         public descricao?: string,
         public score?: number
     ) { super(); }
+
+    // metodo recebe um json e retorna uma nova instância da classe entry com os dados do json
+    static fromJson(jsonData: any): TpCirurgia {
+        return Object.assign(new TpCirurgia(), jsonData);
+    }
 }

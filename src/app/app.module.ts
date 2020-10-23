@@ -11,10 +11,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { ComorbidadeService } from 'src/shared/services/ComorbidadeService.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RecomendacaoPage } from './recomendacao/recomendacao.page';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  //contém a lista de componentes ou páginas
+  declarations: [
+    AppComponent,
+    RecomendacaoPage
+  ],
+  //tem que declarar também quando for uma página
+  entryComponents: [
+    AppComponent,
+    RecomendacaoPage
+  ],
   imports: [
     SharedModule,
     BrowserModule, 
@@ -22,12 +31,15 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(), 
     AppRoutingModule
   ],
+  //são objetos injetados nesta classe que será uma instancia única para esse módulo 
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ComorbidadeService
   ],
+  //indica como a aplicação vai iniciar
   bootstrap: [AppComponent]
 })
+//export significa que pode ser enxergado de outro lugar
 export class AppModule {}

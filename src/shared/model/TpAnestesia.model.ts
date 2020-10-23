@@ -10,4 +10,9 @@ export class TpAnestesia extends GenericDomain{
         public descricao?: string,
         public score?: number
     ) { super(); }
+
+    // metodo recebe um json e retorna uma nova instância da classe entry com os dados do json
+    static fromJson(jsonData: any): TpAnestesia {
+        return Object.assign(new TpAnestesia(), jsonData);
+    }
 }

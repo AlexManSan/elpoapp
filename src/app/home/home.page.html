@@ -1,141 +1,327 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Preenchimento da ELPO
+      ELPO
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-   
-    <!-- <ion-list>
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <!-- <div class="ion-padding"> -->
 
-      <ion-item>
-        <ion-label>Tipo de posição cirúrgica</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of litpPosCirurgica" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+  <form [formGroup]="formGroup" (ngSubmit)="recomecar(); $event.preventDefault()">
+    <ion-header class="header">
+      <ion-toolbar>
+        <ion-buttons slot="start" collapse="true">
+          <ion-button (click)="voltar(theSlides)">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+          <ion-title>Voltar</ion-title>
+        </ion-buttons>
 
-      <ion-item>
-        <ion-label>Tipo de cirurgia</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of litpCirurgia" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-buttons slot="primary" collapse="true">
+          <ion-title>Avançar</ion-title>
+          <ion-button (click)="avancar(theSlides)" [disabled]="ultimoSlide">
+            <ion-icon slot="icon-only" name="arrow-forward"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
 
-      <ion-item>
-        <ion-label>Tipo de anestesia</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of litpAnestesia" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+    <ion-slides pager="true" scrollbar="true" [options]="slideOpts" #theSlides>
 
-      <ion-item>
-        <ion-label>Superfície de suporte</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of lisupSuporte" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <!-- nome, idade e prontuário (o)-->
+      <!-- importante bind de atributos é com colchetes []
+      bind de eventos é com parenteses () -->
+      <ion-slide class="slide1">
+        <ion-grid>
+          <!-- <div formGroupName="paciente"> -->
+            <ion-row>
+              <ion-item class="item1">
+                <ion-label position="floating" id="ion-input-1-lbl"
+                  class="sc-ion-label-ios-h sc-ion-label-ios-s ios label-stacked hydrated">
+                  Nome:
+                  <ion-text color="danger" class="ion-color ion-color-danger ios hydrated">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="paciente.nome" type="text" formControlName="nome"></ion-input>
+              </ion-item>
+              <!-- <p *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>O campo 'Nome' é obrigatório.</p> -->
+            </ion-row>
 
-      <ion-item>
-        <ion-label>Posição dos membros</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of liposMembros" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-row>
+              <ion-item class="item1">
+                <ion-label position="floating">Idade:
+                  <ion-text color="danger" class="ion-color ion-color-danger ios hydrated">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="paciente.idade" type="number" formControlName="idade"></ion-input>
+              </ion-item>
+            </ion-row>
 
-      <ion-item>
-        <ion-label>Comorbidade</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of licomorbidade" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+            <ion-row>
+              <ion-item class="item1">
+                <ion-label position="floating">Prontuário:</ion-label>
+                <ion-input [(ngModel)]="paciente.prontuario" type="number" formControlName="prontuario"></ion-input>
+              </ion-item>
+            </ion-row>
+        <!-- </div> -->
+        </ion-grid>
+      </ion-slide>
 
-      <ion-item>
-          <ion-label>Idade do paciente</ion-label>
-           <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar"
-          [interfaceOptions]="customAlertOptions" interface="alert"
-          [interfaceOptions]="customPopoverOptions" interface="popover" 
-          [interfaceOptions]="customActionSheetOptions" interface="action-sheet"> 
+      <!-- tipo de posição cirurgica ()-->
+      <ion-slide class="slide2">
+        <ion-grid>
 
-          <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-            <ion-select-option *ngFor="let reg of liidadePaciente" 
-            value="{{reg.id}}">{{reg.idade+' - '+reg.score}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-    </ion-list>
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-card style="background-color: burlywood;">
+                <ion-card-header>
+                  <ion-card-title>Selecione um Tipo de Posição Cirúrgica</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
-    <br><br> -->
-    <div class="list-form bg-light">
-      <ion-item class="animated fadeInUp ion-no-padding">
-        <ion-label position="floating">Tipo de posição cirúrgica</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of litpPosCirurgica" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+          <ion-list>
+            <ion-row *ngFor="let reg of litpPosCirurgica" class="ion-align-items-start">
+              <ion-col size="12" size-sm>
+                <ion-item>
+                  <ion-checkbox color="primary" class="checkbox" (click)="identificaTpPosCirurgica(reg, $event)">
+                  </ion-checkbox>
+                  <!-- <ion-label style="font-size: 0.8em;">{{reg.descricao}} - {{reg.score}}</ion-label> -->
+                  <ion-label style="font-size: 0.8em;">{{reg.descricao}}</ion-label>
+                  <!-- <ion-thumbnail slot="end"> -->
+                  <img style="width: 50%;" src="{{reg.img}}">
+                  <!-- </ion-thumbnail> -->
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-slide>
 
-      <ion-item class="animated fadeInUp ion-no-padding">
-        <ion-label position="floating">Tipo de cirurgia</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of litpCirurgia" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <!-- Tempo de Cirurgia (o)-->
+      <ion-slide class="slide3">
+        <ion-grid>
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-card class="bg-bisque">
+                <ion-card-header>
+                  <ion-card-title>Selecione o TEMPO estimado da Cirurgia</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
-      <ion-item class="animated fadeInUp ion-no-padding">
-        <ion-label position="floating">Tipo de anestesia</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of litpAnestesia" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+          <ion-list>
+            <ion-row *ngFor="let reg of litpCirurgia" class="ion-align-items-start">
+              <ion-col size="12" size-sm>
+                <ion-item>
+                  <ion-checkbox color="primary" class="checkbox" (click)="identificaTpCirurgia(reg, $event)">
+                  </ion-checkbox>
+                  <ion-label>{{reg.descricao}}</ion-label>
+                  <!-- <ion-label> - {{reg.score}}</ion-label> -->
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-slide>
 
-      <ion-item class="animated fadeInUp ion-no-padding">
-        <ion-label position="floating">Superfície de suporte</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of lisupSuporte" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <!-- tipo de anestesia (o)-->
+      <ion-slide class="slide4">
+        <ion-grid>
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-card style="background-color: coral;">
+                <ion-card-header>
+                  <ion-card-title>Selecione o Tipo de Anestesia</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
-      <ion-item class="animated fadeInUp ion-no-padding">
-        <ion-label position="floating">Posição dos membros</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of liposMembros" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+          <ion-list>
+            <ion-row *ngFor="let reg of litpAnestesia" class="ion-align-items-start">
+              <ion-col size="12" size-sm>
+                <ion-item>
+                  <ion-checkbox color="primary" class="checkbox" (click)="identificaTpAnestesia(reg, $event)">
+                  </ion-checkbox>
+                  <ion-label>{{reg.descricao}}</ion-label>
+                  <!-- <ion-label> - {{reg.score}}</ion-label> -->
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-slide>
 
-      <ion-item class="animated fadeInUp ion-no-padding">
-        <ion-label position="floating">Comorbidade</ion-label>
-        <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-          <ion-select-option *ngFor="let reg of licomorbidade" 
-          value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <!-- superfície de suporte ()-->
+      <ion-slide class="slide5">
+        <ion-grid>
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-card class="bg-bisque">
+                <ion-card-header>
+                  <ion-card-title>Selecione uma Superfície de Suporte</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
-      <ion-item class="animated fadeInUp ion-no-padding">
-          <ion-label position="floating">Idade do paciente</ion-label>
-          <ion-select placeholder="Selecione" okText="Ok" cancelText="Cancelar">
-            <ion-select-option *ngFor="let reg of liidadePaciente" 
-            value="{{reg.id}}">{{reg.idade+' - '+reg.score}}</ion-select-option>
-          </ion-select>
-        </ion-item>
+          <ion-list>
+            <ion-row *ngFor="let reg of lisupSuporte" class="ion-align-items-start">
+              <ion-col size="12" size-sm>
+                <ion-item>
+                  <ion-checkbox color="primary" class="checkbox" (click)="identificaSupSuporte(reg, $event)">
+                  </ion-checkbox>
+                  <ion-label style="font-size: 0.8em;white-space: pre-line;">{{reg.descricao}}</ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-slide>
 
-    </div>
+      <!-- posição dos membros ()-->
+      <ion-slide class="slide6">
+        <ion-grid>
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-card style="background-color: silver">
+                <ion-card-header>
+                  <ion-card-title>Selecione uma Posição para os Membros</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
-    <br><br>
+          <ion-list>
+            <ion-row *ngFor="let reg of liposMembros" class="ion-align-items-start">
+              <ion-col size="12" size-sm>
+                <ion-item>
+                  <ion-checkbox color="primary" class="checkbox" (click)="identificaPosMembros(reg, $event)">
+                  </ion-checkbox>
+                  <ion-label style="font-size: 0.8em;white-space: pre-line;">{{reg.descricao}}</ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-slide>
 
-    <ion-label>Total de score: 30</ion-label>
+      <!-- comorbidade ok-->
+      <ion-slide class="slide7">
+        <ion-grid>
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-card style="background-color: slategrey;">
+                <ion-card-header>
+                  <ion-card-title>Selecione a(s) Comorbidade(s) do paciente</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
 
-  </div>
+          <ion-list>
+            <ion-row *ngFor="let reg of licomorbidade" class="ion-align-items-start">
+              <ion-col size="12" size-sm>
+                <ion-item>
+                    <ion-checkbox color="primary" class="checkbox" (click)="identificaComorbidades(reg, $event)"></ion-checkbox>
+                    <ion-label style="font-size: 0.8em;white-space: pre-line;">{{reg.descricao}}</ion-label>
+                    <!-- <ion-label> - {{reg.score}}</ion-label> -->
+                  </ion-item> 
+              </ion-col>
+            </ion-row>
+          </ion-list>
+        </ion-grid>
+      </ion-slide>
+
+      <!-- conclusão ok-->
+      <ion-slide class="slide8">
+        <ion-grid>
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-card style="background-color: cadetblue;">
+                <ion-card-header>
+                  <ion-card-title>Conclusão</ion-card-title>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-end">
+            <ion-col size="12" size-sm>
+              <ion-item>
+                <ion-label>Data: {{elpo.data |  date:'dd/MM/yyyy'}}</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-end">
+            <ion-col size="12" size-sm>
+              <ion-item>
+                <ion-label>Paciente: {{paciente.nome}}</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-end">
+            <ion-col size="12" size-sm>
+              <ion-item>
+                <ion-label>Idade: {{paciente.idade}}</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-end">
+            <ion-col size="12" size-sm>
+              <ion-item>
+                <ion-label>Prontuário: {{paciente.prontuario}}</ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-item>
+                <ion-label>Total de Score:</ion-label>
+                <ion-badge color="primary" slot="end" *ngIf="totalScore <= 19">{{totalScore}}</ion-badge>
+                <ion-badge color="danger" slot="end" *ngIf="totalScore > 19">{{totalScore}}</ion-badge>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-start">
+            <ion-col size="12" size-sm>
+              <ion-item>
+                <ion-label>Risco:</ion-label>
+                <ion-badge color="primary" slot="end" *ngIf="totalScore <= 19">Baixo</ion-badge>
+                <ion-badge color="danger" slot="end" *ngIf="totalScore > 19">Alto</ion-badge>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="6" size-sm>
+              <!-- <ion-button color="primary" [disabled]="formGroup.invalid">Refazer</ion-button> -->
+              <ion-button color="primary" (click)="recomecar(theSlides)">Refazer</ion-button>
+            </ion-col>
+
+            <ion-col size="6" size-sm>
+              <!-- <ion-button color="primary" [disabled]="formGroup.invalid">Refazer</ion-button> -->
+              <ion-button color="primary" (click)="presentModal()">Recomendações</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+
+    </ion-slides>
+  </form>
+  <!-- </div> -->
+
+  <!-- mostra o formulário em forma de json -->
+  <!-- <pre>{{formGroup.value | json}}</pre> -->
 </ion-content>
+
+
+

@@ -1,0 +1,84 @@
+typescript
+// slides = [
+  // { titulo: 'Slide 1',
+  //   descricao: 'Descrição do Slide 1',
+  //   imagem: "assets/img/teste.png"},
+
+  // { titulo: 'Slide 2',
+  //   descricao: 'Descrição do Slide 2',
+  //   imagem: "assets/img/teste.png"},
+
+  // { titulo: 'Slide 3',
+  //   descricao: 'Descrição do Slide 3',
+  //   imagem: "assets/img/teste.png"}
+  // ];
+
+
+
+visão:
+<!--<div class="list-form bg-light">
+        <ion-item>
+          <ion-label position="floating">Teste Label</ion-label>
+          <ion-input formControlName="teste"></ion-input>
+        </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.teste.dirty && formGroup.controls.teste.errors"
+          margin-left>Valor inválido</p>
+
+        <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Tipo de posição cirúrgica</ion-label>
+          <ion-select formControlName="tpPosCirurgica" placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of litpPosCirurgica" [value]="reg.id">{{reg.descricao+' - '+reg.score}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <p class="danger" *ngIf="formGroup.controls.tpPosCirurgica.dirty && formGroup.controls.tpPosCirurgica.errors"
+          margin-left>Valor inválido</p>
+
+        <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Tipo de cirurgia</ion-label>
+          <ion-select formControlName="tpCirurgia" placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of litpCirurgia" value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Tipo de anestesia</ion-label>
+          <ion-select formControlName="tpAnestesia" placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of litpAnestesia" value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Superfície de suporte</ion-label>
+          <ion-select formControlName="supSuporte" placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of lisupSuporte" value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Posição dos membros</ion-label>
+          <ion-select formControlName="posMembros" placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of liposMembros" value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Comorbidade</ion-label>
+          <ion-select formControlName="comorbidade" placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of licomorbidade" value="{{reg.id}}">{{reg.descricao+' - '+reg.score}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="animated fadeInUp ion-no-padding">
+          <ion-label position="floating">Idade do paciente</ion-label>
+          <ion-select formControlName="idadePaciente" placeholder="Selecione" okText="Ok" cancelText="Cancelar">
+            <ion-select-option *ngFor="let reg of liidadePaciente" value="{{reg.id}}">{{reg.idade+' - '+reg.score}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div> -->

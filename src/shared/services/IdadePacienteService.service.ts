@@ -16,6 +16,6 @@ import { IdadePaciente } from '../model/IdadePaciente.model';
 export class IdadePacienteService extends GenericService<IdadePaciente> {
 
   constructor(protected injector: Injector) {
-    super(`${API_CONFIG.baseUrl}/idade_pacientes`, injector, Comorbidade.fromJson)
+    super(`${API_CONFIG.baseUrl}/idade_pacientes`, injector, IdadePaciente.fromJson)
    }
 }

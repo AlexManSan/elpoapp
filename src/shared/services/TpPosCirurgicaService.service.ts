@@ -16,6 +16,6 @@ import { TpPosicaoCirurgica } from '../model/TpPosicaoCirurgica.model';
 export class TpPosCirurgicaService extends GenericService<TpPosicaoCirurgica> {
 
   constructor(protected injector: Injector) {
-    super(`${API_CONFIG.baseUrl}/tpposcirurgicas`, injector, Comorbidade.fromJson)
+    super(`${API_CONFIG.baseUrl}/tpposcirurgicas`, injector, TpPosicaoCirurgica.fromJson)
    }
 }

@@ -16,6 +16,6 @@ import { SuperficieSuporte } from '../model/SuperficieSuporte.model';
 export class SuperficieSuporteService extends GenericService<SuperficieSuporte> {
 
   constructor(protected injector: Injector) {
-    super(`${API_CONFIG.baseUrl}/ssuportes`, injector, Comorbidade.fromJson)
+    super(`${API_CONFIG.baseUrl}/ssuportes`, injector, SuperficieSuporte.fromJson)
    }
 }

@@ -1,9 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
 
 import { GenericService } from './GenericService.service';
-import { Comorbidade } from '../model/Comorbidade.model';
 import { API_CONFIG } from 'src/config/api.config';
-import { PosicaoMembros } from '../model/PosicaoMembros.model';
+import { Paciente } from '../model/Paciente.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +12,9 @@ import { PosicaoMembros } from '../model/PosicaoMembros.model';
  * Classe de serviço que se estende a BaseResourceService<Categoria>, informando seu tipo
  * Autor Alex Santos
  */
-export class PosicaoMembrosService extends GenericService<PosicaoMembros> {
+export class PacienteService extends GenericService<Paciente> {
 
   constructor(protected injector: Injector) {
-    super(`${API_CONFIG.baseUrl}/pmembros`, injector, PosicaoMembros.fromJson)
+    super(`${API_CONFIG.baseUrl}/pacientes`, injector, Paciente.fromJson)
    }
 }
